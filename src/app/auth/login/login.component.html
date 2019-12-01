@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <div class="form-group">
+          <mat-form-field hintLabel="Your Registered Email">
+            <input
+              matInput
+              type="email"
+              formControlName="email"
+              placeholder="Your Email"
+            />
+            <mat-error
+              *ngIf="
+                loginForm.get('email').errors &&
+                loginForm.get('email').errors.required
+              "
+              >Email is required to login.</mat-error
+            >
+            <mat-error
+              *ngIf="
+                loginForm.get('email').errors &&
+                loginForm.get('email').errors.email
+              "
+              >Email is Invalid.</mat-error
+            >
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field>
+            <input
+              matInput
+              type="password"
+              placeholder="Password"
+              formControlName="password"
+            />
+            <mat-error
+              *ngIf="
+                loginForm.get('password').errors &&
+                loginForm.get('password').errors.required
+              "
+              >Password is required to login.</mat-error
+            >
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <button
+            mat-raised-button
+            color="accent"
+            type="submit"
+            [disabled]="loginForm.invalid"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

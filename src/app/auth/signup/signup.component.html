@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <section>
+        <form #signupForm="ngForm" (ngSubmit)="onSignup(signupForm)">
+          <div class="form-group">
+            <mat-form-field>
+              <input
+                matInput
+                type="email"
+                class=""
+                name="email"
+                id="exampleInputEmail1"
+                placeholder="Your Email"
+                aria-describedby="emailHelp"
+                ngModel
+                email
+                required
+                #emailField="ngModel"
+              />
+              <mat-error *ngIf="emailField.hasError('required')"
+                >Email Should not be Empty.</mat-error
+              >
+              <mat-error *ngIf="!emailField.hasError('required')"
+                >Email is Invalid.</mat-error
+              >
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field hintLabel="Should be at least 6 Charcters Long.">
+              <input
+                matInput
+                type="password"
+                class=""
+                name="password"
+                id="exampleInputPassword"
+                placeholder="Your Password"
+                aria-describedby="passHelp"
+                ngModel
+                #passField="ngModel"
+                required
+                minlength="6"
+              />
+              <mat-hint align="end">{{ passField.value?.length }}/6</mat-hint>
+              <mat-error
+                >Password Must be at least 6 Characters Long.</mat-error
+              >
+            </mat-form-field>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field>
+              <input
+                name="birthdate"
+                ngModel
+                matInput
+                [matDatepicker]="picker"
+                [max]="maxDate"
+                placeholder="Your Birthdate"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-checkbox name="agree" ngModel
+              >Agree to Terms & Conditions.</mat-checkbox
+            >
+          </div>
+
+          <div class="form-group">
+            <button
+              type="submit"
+              mat-raised-button
+              color="accent"
+              [disabled]="signupForm.invalid"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+</div>
