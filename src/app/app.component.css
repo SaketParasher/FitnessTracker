@@ -1,0 +1,10 @@
+
+/* This height:100% is to set the height of mat-sidenav height full height of html and body ie whole height*/
+mat-sidenav-container,mat-sidenav{
+    height: 100%;
+}
+
+mat-sidenav{
+    width:250px
+}
+

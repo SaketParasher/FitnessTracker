@@ -1,0 +1,17 @@
+a{
+    text-decoration: none;
+    color: white;
+}
+
+a:hover,a:active{
+    color: coral;
+}
+.navItems{
+    display: flex;
+    flex:2;
+    justify-content: flex-end;
+}
+
+.navItems a{
+    margin: 0 10px;
+}

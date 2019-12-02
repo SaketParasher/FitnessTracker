@@ -1,5 +1,19 @@
 <!-- <button mat-raised-button color="accent">Click Me</button>
 <button mat-icon-button color="accent"><mat-icon>home</mat-icon></button> -->
+<!-- 
+<app-navbar></app-navbar> -->
 
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
+<mat-sidenav-container>
+
+    <mat-sidenav #sidenav role="navigation">
+        <app-sidenav (emitClose)="closeSidebar()"></app-sidenav>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <app-header (emitToggle)="toggleSidebar()"></app-header>
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
