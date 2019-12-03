@@ -10,7 +10,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 // Custom Modules
 import { AppRoutingModule } from "./app-routing.module";
 
-// Custom COmponents
+// Custom Components
 import { AppComponent } from "./app.component";
 import { SignupComponent } from "./auth/signup/signup.component";
 import { LoginComponent } from "./auth/login/login.component";
@@ -22,6 +22,14 @@ import { WelcomeComponent } from "./welcome/welcome.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
+
+import { StopTrainingDialog } from './taining/current-training/stop-training.component';
+
+// Custom Services
+import { AuthService } from "./auth/auth.service";
+import { AuthGuard } from "./auth/auth.guard";
+import { TrainingService } from "./taining/training.service";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +42,8 @@ import { SidenavComponent } from './navigation/sidenav/sidenav.component';
     WelcomeComponent,
     NavbarComponent,
     HeaderComponent,
-    SidenavComponent
+    SidenavComponent,
+    StopTrainingDialog
   ],
   imports: [
     BrowserModule,
@@ -45,7 +54,8 @@ import { SidenavComponent } from './navigation/sidenav/sidenav.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [AuthService, AuthGuard, TrainingService],
+  bootstrap: [AppComponent],
+  entryComponents: [StopTrainingDialog]
 })
-export class AppModule {}
+export class AppModule { }

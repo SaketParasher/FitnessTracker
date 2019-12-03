@@ -6,9 +6,9 @@
     </div>
     <div> <a routerLink="/">Logo</a></div>
     <div class="navItems" fxHide.xs>
-        <a routerLink="/login">Login</a>
-        <a routerLink="/signup">Signup</a>
-        <a routerLink="/training">Training</a>
-        <a routerLink="/">Logout</a>
+        <a *ngIf="!isAuthorised" routerLink="/login">Login</a>
+        <a *ngIf="!isAuthorised" routerLink="/signup">Signup</a>
+        <a *ngIf="isAuthorised" routerLink="/training">Training</a>
+        <a *ngIf="isAuthorised" (click)="logout()">Logout</a>
     </div>
 </mat-toolbar>

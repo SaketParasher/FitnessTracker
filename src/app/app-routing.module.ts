@@ -8,12 +8,14 @@ import { CurrentTrainingComponent } from "./taining/current-training/current-tra
 import { NewTrainingComponent } from "./taining/new-training/new-training.component";
 import { PastTrainingComponent } from "./taining/past-training/past-training.component";
 import { WelcomeComponent } from "./welcome/welcome.component";
+import { AuthGuard } from './auth/auth.guard';
+
 
 const routes: Routes = [
   { path: "", component: WelcomeComponent },
   { path: "signup", component: SignupComponent },
   { path: "login", component: LoginComponent },
-  { path: "training", component: TainingComponent },
+  { path: "training", component: TainingComponent, canActivate: [AuthGuard] },
   { path: "**", redirectTo: "", pathMatch: "full" }
 ];
 
@@ -21,4 +23,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
